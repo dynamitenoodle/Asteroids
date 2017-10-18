@@ -32,3 +32,4 @@ Known Issues:
 The collisions are a bit wierd on the smaller objects, but they usually work
 Occasionally, an asteroid will randomly spawn in the center of the screen, not common 
 but it happens
+If the Highscore.txt and Prevscore.txt are not in the data folder, dying will not work

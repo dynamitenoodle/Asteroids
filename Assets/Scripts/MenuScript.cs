@@ -17,7 +17,7 @@ public class MenuScript : MonoBehaviour {
 
         GUI.color = Color.blue;
 
-        GUI.Label(new Rect(10, 150, Screen.width, Screen.height), "To start, Click anywhere", style);
+        GUI.Label(new Rect(10, 150, Screen.width, Screen.height), "To start, Click anywhere (hit m for music)", style);
 
         GUI.color = Color.black;
 

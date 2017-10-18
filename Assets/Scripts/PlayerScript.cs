@@ -194,6 +194,6 @@ public class PlayerScript : MonoBehaviour {
         if (score > gameObject.GetComponent<ScoreScript>().ReadFile(gameObject.GetComponent<ScoreScript>().highFileLocation))
             gameObject.GetComponent<ScoreScript>().WriteFile(gameObject.GetComponent<ScoreScript>().highFileLocation, score);
 
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene(0);
     }
 }

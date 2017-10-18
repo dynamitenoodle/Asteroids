@@ -6,12 +6,12 @@ public class AsteroidScript : MonoBehaviour
 {
 
     // attributes
-    private float camWidth, camHeight, speed, extraDistance;
+    private float camWidth, camHeight, extraDistance;
     public GameObject player;
     public List<GameObject> bullets;
     public Transform spawn1, spawn2;
-    private Vector2 direction;
-    public float scaleSize;
+    public Vector2 direction;
+    public float scaleSize, speed;
 
     // Use this for initialization
     void Start()
@@ -22,8 +22,8 @@ public class AsteroidScript : MonoBehaviour
         speed = 0.02f;
         extraDistance = 1.5f;
 
-        // vector 2s
-        direction = new Vector2(Random.Range(-speed, speed), Random.Range(-speed, speed));
+        if (transform.localScale.x > 0.5f && scaleSize == 1.8f || transform.localScale.x > 0.25f && scaleSize == 3.4f)
+            direction = new Vector2(Random.Range(-speed, speed), Random.Range(-speed, speed));
     }
 
     // Update is called once per frame
@@ -83,8 +83,13 @@ public class AsteroidScript : MonoBehaviour
                 newAsteroid.GetComponent<AsteroidScript>().scaleSize = scaleSize;
 
                 // create
-                Instantiate(newAsteroid, spawn1.position, spawn1.rotation);
-                Instantiate(newAsteroid, spawn2.position, spawn2.rotation);
+                GameObject a1 = Instantiate(newAsteroid, spawn1.position, spawn1.rotation);
+                GameObject a2 = Instantiate(newAsteroid, spawn2.position, spawn2.rotation);
+
+                // set directions
+                float divisor = 5f;
+                a1.GetComponent<AsteroidScript>().direction = new Vector2(direction.x += Random.Range(-speed / divisor, speed / divisor), direction.y += Random.Range(-speed / divisor, speed / divisor));
+                a2.GetComponent<AsteroidScript>().direction = new Vector2(direction.x += Random.Range(-speed / divisor, speed / divisor), direction.y += Random.Range(-speed / divisor, speed / divisor));
             }
 
             // boom
